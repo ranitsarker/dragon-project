@@ -5,7 +5,7 @@ const LeftSidebar = () => {
     const [categories, setCategories] = useState([]);
     useEffect(() =>{
         fetch('/categories.json')
-        .then(result => result.json())
+        .then(response => response.json())
         .then(data => setCategories(data))
     }, [])
 
