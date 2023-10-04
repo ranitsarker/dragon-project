@@ -1,6 +1,12 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
 const NewsCard = ({ news }) => {
+    if (!news) {
+        // Handle the case where news is not available
+        return null;
+    }
+
     const { title, details, image_url, _id } = news;
 
     return (
@@ -9,17 +15,16 @@ const NewsCard = ({ news }) => {
                 <img src={image_url} alt={title} className="w-full h-auto" />
                 <div className="px-6 py-4">
                     <div className="font-bold text-xl mb-2">{title}</div>
-                    {
-                        details.length > 200
-                        ? <p>{details.slice(0, 200)} <Link 
-                        to={`/news/${_id}`}
-                        className="text-blue-950 font-bold">
-                            Read More...
+                    {details.length > 200 ? (
+                        <p>
+                            {details.slice(0, 200)}{" "}
+                            <Link to={`/news/${_id}`} className="text-blue-950 font-bold">
+                                Read More...
                             </Link>
                         </p>
-                        :<p className="text-gray-700 text-base">{details}</p>
-                    }
-                    
+                    ) : (
+                        <p className="text-gray-700 text-base">{details}</p>
+                    )}
                 </div>
             </div>
         </div>
