@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
-
+import moment from 'moment';
+import Marquee from "react-fast-marquee";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -39,7 +40,11 @@ const Navbar = () => {
                         </li>
                     </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">Dragon News</a>
+                    <div>
+                        <a className="btn btn-ghost normal-case text-xl">Dragon News</a>
+                        <p>{moment().format("dddd, MMMM Do YYYY")}</p>
+                    </div>
+
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -61,10 +66,18 @@ const Navbar = () => {
                     </div>
                     :
                     <div className="navbar-end">
-                    <Link to="/login" className="btn" >Login</Link>
-                </div>
+                        <Link to="/login" className="btn" >Login</Link>
+                    </div>
                 }
+
             </div>
+            <div className="m-4 flex">
+                <button className="btn">Lasted news:</button>
+                <Marquee>
+                    I can be a React component, multiple React components, or just some text.
+                </Marquee>
+            </div>
+
         </>
     );
 };
