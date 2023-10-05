@@ -45,32 +45,53 @@ const Navbar = () => {
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
-                            <li>
+                            <li className="mx-2">
                                 <NavLink to="/">Home</NavLink>
                             </li>
-                            <li>
+                            <li className="mx-2">
                                 <NavLink to="/login">Login</NavLink>
                             </li>
-                            <li>
+                            <li className="mx-2">
                                 <NavLink to="/register">Register</NavLink>
                             </li>
                         </ul>
                     </div>
-                    {
-                        user ? 
-                        <div className="navbar-end inline-block">
-                            <span className="mr-2 text-xs">
-                                {user.photoURL && <img className="inline-block mx-2 w-8 h-8 rounded-full" src={user.photoURL} alt={`${user.displayName}'s photo`} />}
-                                
-                                User Email: {user.email || 'Unknown'}</span>
-                            
-                            <button className="btn" onClick={handleLogOut}>Logout</button>
-                        </div>
-                        :
-                        <div className="navbar-end">
-                            <Link to="/login" className="btn" >Login</Link>
-                        </div>
-                    }
+                        {
+                            user ? (
+                                <div className="navbar-end inline-block">
+                                <span className="mr-2 text-xs">
+                                    {user.photoURL && (
+                                    <img
+                                        className="inline-block mx-2 w-8 h-8 rounded-full"
+                                        src={user.photoURL}
+                                        alt={`${user.displayName}'s photo`}
+                                    />
+                                    )}
+                                    {user.displayName ? (
+                                    <>
+                                        User Name: {user.displayName}
+                                        <button className="btn mx-2" onClick={handleLogOut}>
+                                        Logout
+                                        </button>
+                                    </>
+                                    ) : (
+                                    <>
+                                        User Email: {user.email || 'Unknown'}
+                                        <button className="btn" onClick={handleLogOut}>
+                                        Logout
+                                        </button>
+                                    </>
+                                    )}
+                                </span>
+                                </div>
+                            ) : (
+                                <div className="navbar-end">
+                                <Link to="/login" className="btn">
+                                    Login
+                                </Link>
+                                </div>
+                            )
+                        }
                 </div>
             </div>
             <div className="m-4 flex">
