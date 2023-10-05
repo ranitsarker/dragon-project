@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import moment from 'moment';
@@ -7,7 +7,15 @@ import toast from "react-hot-toast";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [news, setNews] = useState([]); // State to store news data
 
+    useEffect(() => {
+        // Fetch your news data here, e.g., from /news.json
+        fetch('/news.json')
+            .then(response => response.json())
+            .then(data => setNews(data))
+            .catch(error => console.error('Error fetching news data:', error));
+    }, []);
     // Logout: 
     const handleLogOut = () => {
         logOut()
@@ -97,8 +105,16 @@ const Navbar = () => {
             </div>
             <div className="m-4 flex">
                 <button className="btn">Lasted news:</button>
-                <Marquee>
-                    I can be a React component, multiple React components, or just some text.
+                <Marquee pauseOnHover="true">
+                {news.map((post) => (
+                            <Link
+                                key={post._id}
+                                to={`/news/${post._id}`} // Set the specific news post URL
+                                className="text-blue-950 font-bold mx-4"
+                            >
+                                {post.title}
+                            </Link>
+                        ))}
                 </Marquee>
             </div>
         </>
