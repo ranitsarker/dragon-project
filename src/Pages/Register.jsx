@@ -17,7 +17,7 @@ const Register = () => {
 
         // create user:
         createUser(email, password)
-        .then(result =>{
+        .then(() =>{
             // console.log(result.user)
             handleUpdateProfile(name, photo)
             .then(() => {

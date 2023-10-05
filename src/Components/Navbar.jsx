@@ -3,18 +3,15 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import moment from 'moment';
 import Marquee from "react-fast-marquee";
-import { useState } from "react";
 import toast from "react-hot-toast";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
-    const [logoutSuccess, setLogoutSuccess] = useState(false); // State to track logout success
 
     // Logout: 
     const handleLogOut = () => {
         logOut()
             .then(() => {
-                setLogoutSuccess(true);
                 toast.success('Successfully logged out.'); // Display the success toast
             })
             .catch()

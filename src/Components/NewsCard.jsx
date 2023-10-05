@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
 const NewsCard = ({ news }) => {
@@ -25,5 +26,8 @@ const NewsCard = ({ news }) => {
         </div>
     );
 };
-
+NewsCard.propTypes = {
+    news: PropTypes.object.isRequired,
+  };
+  
 export default NewsCard;
