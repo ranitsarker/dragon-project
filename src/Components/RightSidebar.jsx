@@ -2,20 +2,30 @@ import { FaGoogle, FaTwitter, FaGithub, FaFacebook, FaYoutube} from 'react-icons
 import qZone1 from "../../src/assets/qZone1.png";
 import qZone2 from "../../src/assets/qZone2.png";
 import qZone3 from "../../src/assets/qZone3.png";
+import { useContext } from 'react';
+import { AuthContext } from '../Providers/AuthProvider';
+
 
 
 
 const RightSidebar = () => {
+const { googleLogin, githubLogin } = useContext(AuthContext);
+    const handleSocialLogin = (media) =>{
+        media()
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+
+    }
     return (
         <> 
         
         <div className='p4 space-y-2 m-3'>
         <h4 className="text-xl font-semibold">Login With:</h4>
-            <button className="btn my-3 btn-outline w-full">
+            <button onClick={() => handleSocialLogin(googleLogin)} className="btn my-3 btn-outline w-full">
                 <FaGoogle></FaGoogle>
                 Google
             </button>
-            <button className="btn my-3 btn-outline w-full">
+            <button onClick={() => handleSocialLogin(githubLogin)} className="btn my-3 btn-outline w-full">
                 <FaGithub></FaGithub>
                 GitHub
             </button>
