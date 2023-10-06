@@ -30,10 +30,9 @@ const myCustomRouter = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path: '/category/:categoryId', // Use a dynamic route parameter
-        element: <CategoryNews />, // Use your CategoryNews component
-        // Define a loader function to fetch category-wise news
-        loader: (params) => fetch(`/category/${params.categoryId}.json`), // Adjust the path as needed
+        path: '/category/:categoryId', 
+        element: <CategoryNews></CategoryNews>
+        
       },
     ],
   },

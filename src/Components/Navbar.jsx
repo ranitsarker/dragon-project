@@ -48,7 +48,7 @@ const Navbar = () => {
                             </ul>
                         </div>
                         <div>
-                            <Link to="/" className="text-xl font-bold">Dragon News</Link>                            <p className="italic font-semibold text-sm">{moment().format("dddd, MMMM Do YYYY, h:mm:ss a")}</p>
+                            <Link to="/" className="text-xl font-bold">Dragon News</Link>                            <p className="italic font-semibold text-sm">{moment().format("dddd, MMMM Do YYYY, h:mm a")}</p>
                         </div>
                     </div>
                     <div className="navbar-center hidden lg:flex">

@@ -5,6 +5,8 @@ import { Helmet } from "react-helmet";
 
 const CategoryNews = () => {
   const { categoryId } = useParams(); // Get the categoryId from the URL parameter
+  
+  // to get category name from categories.json
   const [categoryName, setCategoryName] = useState(""); // State to store the category name
 
   useEffect(() => {
