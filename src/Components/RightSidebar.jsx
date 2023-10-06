@@ -5,9 +5,11 @@ import qZone1 from "../../src/assets/qZone1.png";
 import qZone2 from "../../src/assets/qZone2.png";
 import qZone3 from "../../src/assets/qZone3.png";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const RightSidebar = () => {
   const { googleLogin, githubLogin } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   // Function to handle Google login
   const handleGoogleLogin = async () => {
@@ -15,6 +17,7 @@ const RightSidebar = () => {
       await googleLogin();
       // Show toast message upon successful Google login
       toast.success('Successfully logged in.');
+      navigate (location?.state ? location.state : '/');
     } catch (error) {
       console.error("Google login error:", error);
     }
@@ -26,6 +29,7 @@ const RightSidebar = () => {
       await githubLogin();
       // Show toast message upon successful GitHub login
       toast.success('Successfully logged in.');
+      navigate (location?.state ? location.state : '/');
     } catch (error) {
       console.error("GitHub login error:", error);
     }

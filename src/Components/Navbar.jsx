@@ -27,8 +27,8 @@ const Navbar = () => {
 
     return (
         <>
-            <div className="navbar bg-base-100">
-                <div className="navbar-content w-full">
+            <div className="navbar bg-[#f7f7f7]">
+                <div className="navbar-content w-full mx-4">
                     <div className="navbar-start inline-block">
                         <div className="dropdown">
                             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -48,8 +48,7 @@ const Navbar = () => {
                             </ul>
                         </div>
                         <div>
-                            <a className="btn btn-ghost normal-case text-xl">Dragon News</a>
-                            <p>{moment().format("dddd, MMMM Do YYYY")}</p>
+                            <Link to="/" className="text-xl font-bold">Dragon News</Link>                            <p className="italic font-semibold text-sm">{moment().format("dddd, MMMM Do YYYY, h:mm:ss a")}</p>
                         </div>
                     </div>
                     <div className="navbar-center hidden lg:flex">
@@ -71,7 +70,7 @@ const Navbar = () => {
                                 <span className="mr-2 text-xs">
                                     {user.photoURL && (
                                     <img
-                                        className="inline-block mx-2 w-8 h-8 rounded-full"
+                                        className="inline-block mx-2 w-8 h-8 my-2 rounded-full"
                                         src={user.photoURL}
                                         alt={`${user.displayName}'s photo`}
                                     />
@@ -79,14 +78,14 @@ const Navbar = () => {
                                     {user.displayName ? (
                                     <>
                                         {user.displayName}
-                                        <button className="btn mx-2" onClick={handleLogOut}>
+                                        <button className="font-bold mx-4 btn btn-outline rounded-lg" onClick={handleLogOut}>
                                         Logout
                                         </button>
                                     </>
                                     ) : (
                                     <>
                                         {user.email || 'Unknown'}
-                                        <button className="btn" onClick={handleLogOut}>
+                                        <button className="font-bold mx-4 btn btn-outline rounded-lg" onClick={handleLogOut}>
                                         Logout
                                         </button>
                                     </>
@@ -95,7 +94,7 @@ const Navbar = () => {
                                 </div>
                             ) : (
                                 <div className="navbar-end">
-                                <Link to="/login" className="btn">
+                                <Link to="/login" className="font-bold mx-4 btn btn-outline rounded-lg">
                                     Login
                                 </Link>
                                 </div>
@@ -104,7 +103,7 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="m-4 flex">
-                <button className="btn">Lasted news:</button>
+                <button className="btn font-bold text-sm normal-case btn-outline rounded-lg">Lasted news:</button>
                 <Marquee pauseOnHover="true">
                 {news.map((post) => (
                             <Link

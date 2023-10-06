@@ -2,10 +2,14 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import toast from "react-hot-toast";
 import { FaGoogle, FaGithub } from 'react-icons/fa';
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { LoginUser, googleLogin, githubLogin } = useContext(AuthContext);
   const [loginError, setLoginError] = useState(null);
+  const location = useLocation();
+  console.log(location);
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -23,6 +27,7 @@ const Login = () => {
         toast.success('Successfully logged in.');
         // Navigate after login
         // You can add your navigation logic here
+        navigate (location?.state ? location.state : '/');
       })
       .catch((error) => {
         console.error(error);
@@ -36,6 +41,7 @@ const Login = () => {
           await googleLogin();
           // Show toast message upon successful Google login
           toast.success('Successfully logged in.');
+          navigate (location?.state ? location.state : '/');
         } catch (error) {
           console.error("Google login error:", error);
         }
@@ -47,6 +53,7 @@ const Login = () => {
           await githubLogin();
           // Show toast message upon successful GitHub login
           toast.success('Successfully logged in.');
+          navigate (location?.state ? location.state : '/');
         } catch (error) {
           console.error("GitHub login error:", error);
         }
@@ -94,7 +101,7 @@ const Login = () => {
               />
             </div>
             <button
-              className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600"
+              className="w-full btn btn-outline py-2 rounded-lg"
               type="submit"
             >
               Login

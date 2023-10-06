@@ -8,15 +8,15 @@ const Home = () => {
     console.log(news);
     return (
             <div className="flex flex-wrap">
-                <div className="w-full lg:w-1/5 border mb-4 md:mb-0">
+                <div className="w-full lg:w-1/5  mb-4 md:mb-0">
                     <LeftSidebar></LeftSidebar>
                 </div>
-                <div className="w-full lg:w-3/5 newsContainer border mb-4 md:mb-0">
+                <div className="w-full lg:w-3/5 newsContainer  mb-4 md:mb-0">
                     {news.map(aNews => (
                         <NewsCard key={aNews._id} news={aNews}></NewsCard>
                     ))}
                 </div>
-                <div className="w-full lg:w-1/5 border">
+                <div className="w-full lg:w-1/5 ">
                     <RightSidebar></RightSidebar>
                 </div>
             </div>

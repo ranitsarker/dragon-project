@@ -6,7 +6,7 @@ const NewsCard = ({ news }) => {
 
     return (
         <div className="w-full p-2">
-            <div className="max-w-full rounded border p-4 bg-slate-100">
+            <div className="max-w-full rounded p-4 bg-[#f7f7f7]">
                 <img src={image_url} alt={title} className="w-full h-auto" />
                 <div className="px-6 py-4">
                     <div className="font-bold text-xl mb-2">{title}</div>
