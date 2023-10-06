@@ -3,6 +3,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 import toast from "react-hot-toast";
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { useLocation, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { LoginUser, googleLogin, githubLogin } = useContext(AuthContext);
@@ -61,6 +62,9 @@ const Login = () => {
 
   return (
     <>
+        <Helmet>
+          <title>Dragon News | Login</title>
+        </Helmet>
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <div className="bg-white p-8 rounded shadow-md w-96">
           <h2 className="text-2xl font-semibold mb-4">Login</h2>

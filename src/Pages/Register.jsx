@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
     const { createUser, handleUpdateProfile}= useContext(AuthContext)
@@ -31,6 +32,9 @@ const Register = () => {
     }
     return (
         <>
+            <Helmet>
+                <title>Dragon News | Register</title>
+            </Helmet>
             <div className="min-h-screen flex items-center justify-center bg-gray-100">
                 <div className="bg-white p-8 rounded shadow-md w-96">
                     <h2 className="text-2xl font-semibold mb-4">Register</h2>

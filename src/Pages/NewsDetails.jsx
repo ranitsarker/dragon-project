@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import RightSidebar from "../Components/RightSidebar";
+import { Helmet } from "react-helmet";
 
 const NewsDetails = () => {
     const { id } = useParams();
@@ -26,6 +27,9 @@ const NewsDetails = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Dragon News | Details</title>
+            </Helmet>
             <div className="flex flex-wrap">
                 <div className="w-full md:w-70p lg:w-4/5 px-4 md:px-10">
                     <div className="max-w-full rounded overflow-hidden shadow-lg mx-auto">

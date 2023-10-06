@@ -2,11 +2,16 @@ import { useLoaderData } from "react-router-dom";
 import NewsCard from "../Components/NewsCard";
 import LeftSidebar from "../Components/LeftSidebar";
 import RightSidebar from "../Components/RightSidebar";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
     const news = useLoaderData();
     console.log(news);
     return (
+        <>
+            <Helmet>
+                <title>Dragon News | Home</title>
+            </Helmet>
             <div className="flex flex-wrap">
                 <div className="w-full lg:w-1/5  mb-4 md:mb-0">
                     <LeftSidebar></LeftSidebar>
@@ -20,6 +25,8 @@ const Home = () => {
                     <RightSidebar></RightSidebar>
                 </div>
             </div>
+        </>
+
     );
 };
 
